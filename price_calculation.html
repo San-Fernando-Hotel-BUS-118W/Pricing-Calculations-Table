@@ -1,4 +1,4 @@
-﻿<!-- Alexis Paredes -->
+<!-- Alexis Paredes -->
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -8,42 +8,188 @@
     <title>Calculator per Night</title>
     <style>
         table#t01, th, td{
-        border: 1px solid black;
+        border: 2px solid black;
+        background-color: #FFFFFF;
+        padding-top: 30px;
+        padding-bottom: 30px; 
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-top: 15%;
+        margin-left: 31%;
+        margin-right: 30%;
+        margin-bottom: 10%;
+        }
+
+        input[type=number], input[type=reset], input[type=button]{
+        background-color: #D1CFE2;
+        padding-top: 15px;
+        padding-bottom: 15px; 
+        padding-left: 15px;
+        padding-right: 50px;    
+        }
+        td[id=earnings_prompt]{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        padding-left: 20px;    
+        }
+        .prices_title h1{
+        color: #fff;
+        font-size: 70px;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%,50%);
+        }
+       
+        
+/*From Here to the bottom is the CSS copied from the main shared CSS file*/
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: Century Gotchic;
+}
+
+header{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(wallpaper_main.jpeg);
+    height: 110vh;
+    background-size: auto;
+    background-position: center;
+}
+
+ul{
+    float:right;
+    list-style-type: none;
+    margin-top: 25px;
     
-        }
-        p{
+}
 
-        text-align:left;
-        }
-        th, td {
-        padding: 10px;
-        }
-        tr:nth-child(even){
-        background-color:ivory;
-        }
+ul li{
+    display: inline-block;
+}
 
-        #btn1{
-        display:block;
-        width: 100%;
-        height:100%;
-        font-size:20px;
-        }
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.4s ease;
 
-        #quantity_
-        body{
-        background-color: white;
+}
+
+ul li.active a{
+    background-color: #fff;
+    color: #000;
+}
+
+ul li a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.logo img{
+    float: left;
+    width: 150px;
+    height: auto;
+    margin-top: 25px;
+}
+
+.main{
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+
+
+.title h1{
+    color: #fff;
+    font-size: 70px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,50%);
+
+}
+
+
+.contact-section h1{
+    color: #fff;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,50%);
+}
+
+.contact-form {
+    max-width: 1500px;
+    position: absolute;
+    top:  15%;
+    left: 50%;
+    transform: translate(-50%,50%);
     
-        }
+}
+
+.contact-form-text{
+    display: block;
+    width: 100%;
+    box-sizing : border-box;
+    margin: 16px 0;
+    border: 0 transparent;
+    background:  #111;
+    padding: 20px 40px;
+    outline: none;
+    color: #fff;
+    transition: 0.5s;
+    text-align: center;
+
+}
+
+.contact-form-text:hover{
+    box-shadow: 0 0 10px 4px #fff;
+
+}
+
+textarea.contact-form-text{
+    resize: none;
+    height: 70 px;
+
+}
+
+.contact-form-btn{
+    
+    position: absolute;
+    top:  98%;
+    left: 50%;
+    transform: translate(-50%,50%);
+    background: #008000;
+    color: #fff;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 20px;
+    
+    cursor: pointer;
+    transition: 0.5s;
+
+} 
+
+.contact-form-btn: hover{
+    background: #fff;
+}
 
     </style>
 </head>
 <body>
-    <h1>Calculator per Night</h1>
+        <header>
 
-    <p>Enter Desired Nights to Calculate Prices</p>
-
-
-    <table id="t01">
+        <div class = "main">
+        </div>
+        <div class = "prices_title" >
+            <h1>San Fernando Hotel Prices</h1>
+        </div>    
+    <table id="t01" >
+        <caption style="color:red;">Calculator per Night</caption>
+        <p>Desired Nights to Calculate Prices</p>        
         <form>
             <tr>
                 <th> Hotel Packages</th>
@@ -67,9 +213,9 @@
             </tr>
             
             <tr>
-                <td><input type="button" id="btn1" onclick="calculateCommish()" value="Calculate"</td>
-                <td><input type="reset" value="Reset" onclick="getElementById('earnings_prompt').innerHTML = 'Your weekly earnings are <strong>$.</strong>'" /></td>
-                <td id="earnings_prompt">Your Total Cost Is : (plus taxes)<strong>$.</strong></td>
+                <td><input type="button" id="btn1" onclick="calculateCommish()" value="Calculate" </td>
+                <td><input type="reset" value="Reset" onclick="getElementById('earnings_prompt').innerHTML = '(Please Select Again the # of Nights...)'" /></td>
+                <td id="earnings_prompt">Your Total Cost Is : (Plus Fees)<strong>$.</strong></td>
             </tr>
         </form>
     </table>
@@ -90,9 +236,13 @@
             var subtotal = sum * com_pct;
             var total_cost = weekly + subtotal;
 
-            document.getElementById("earnings_prompt").innerHTML = "Your Total Cost Is : (plus taxes) <strong>$</strong>" + "<strong>" + total_cost +"</strong>" + "<strong>.</strong>";
+            document.getElementById("earnings_prompt").innerHTML = "Your Total Cost Is : (Plus Taxes) <strong>$</strong>" + "<strong>" + total_cost +"</strong>" + "<strong>.</strong>";
         }
     </script>
+    </header>
+
+
+
 
 </body>
 </html>
